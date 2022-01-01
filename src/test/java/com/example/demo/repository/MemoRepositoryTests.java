@@ -52,11 +52,17 @@ public class MemoRepositoryTests {
 
 
     @Test
+    @Transactional
     @DisplayName("100번째 객체 삭제 테스트")
     public void testDelete(){
         Memo memo = Memo.builder().id(100L).build();
         memoRepository.delete(memo);
     }
 
+    @Test
+    @DisplayName("100번째 객체 삭제 테스트2")
+    public void testDeleteById(){
+        memoRepository.deleteById(100L);
+    }
 
 }
