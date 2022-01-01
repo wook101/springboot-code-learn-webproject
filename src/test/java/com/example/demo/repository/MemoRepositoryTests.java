@@ -20,6 +20,7 @@ public class MemoRepositoryTests {
             System.out.println(memoRepository.getClass().getName());
     }
 
+
     @Test
     @DisplayName("100개의 memo객체 저장 테스트")
     public void testInsertDummies(){
@@ -38,9 +39,14 @@ public class MemoRepositoryTests {
             Memo memo = result.get();
             System.out.println(memo);
         }
-
     }
 
+    @Test
+    @DisplayName("새로운 100번째 객체 만들고 수정 테스트")
+    public void testUpdate(){
+        Memo memo = Memo.builder().id(100L).memoText("수정된 메모").build();
+        memoRepository.save(memo);
+    }
 
 
 
