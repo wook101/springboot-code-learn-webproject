@@ -15,7 +15,7 @@ public class Memo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id; //null을 사용할 수 있기 때문에 Wrapper타입인 Long을 사용
 
     @Column(length = 200, nullable = false)
     private String memoText;
