@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.transaction.Transactional;
 import java.util.Optional;
 import java.util.stream.IntStream;
 
@@ -42,6 +43,7 @@ public class MemoRepositoryTests {
     }
 
     @Test
+    @Transactional
     @DisplayName("새로운 100번째 객체 만들고 수정 테스트")
     public void testUpdate(){
         Memo memo = Memo.builder().id(100L).memoText("수정된 메모").build();
@@ -49,7 +51,12 @@ public class MemoRepositoryTests {
     }
 
 
-
+    @Test
+    @DisplayName("100번째 객체 삭제 테스트")
+    public void testDelete(){
+        Memo memo = Memo.builder().id(100L).build();
+        memoRepository.delete(memo);
+    }
 
 
 }
